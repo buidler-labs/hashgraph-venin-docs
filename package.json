@@ -7,6 +7,7 @@
     "build:bundle-docs-app": "rollup -c ./rollup.config.js",
     "build:docs-docusaurus": "docusaurus build --out-dir=./docs",
     "clean": "docusaurus clear",
+    "serve": "docusaurus serve --dir=./docs --port=3001",
     "start:docs": "docusaurus start"
   },
   "keywords": [
