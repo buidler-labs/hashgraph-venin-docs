@@ -31,7 +31,7 @@ module.exports = async function () {
             editUrl:
               "https://github.com/buidler-labs/hedera-strato-docs/edit/main/docs/",
             exclude: ["**/src/**"],
-            // path: ".",
+            path: "src.docs",
             remarkPlugins: [
               remarkGfm,
               remarkMermaid,

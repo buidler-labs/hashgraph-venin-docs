@@ -5,9 +5,8 @@
   "scripts": {
     "build": "run-s build:bundle-docs-app build:docs-docusaurus",
     "build:bundle-docs-app": "rollup -c ./rollup.config.js",
-    "build:docs-docusaurus": "docusaurus build --out-dir=./built",
+    "build:docs-docusaurus": "docusaurus build --out-dir=./docs",
     "clean": "docusaurus clear",
-    "deploy:docs": "docusaurus deploy",
     "start:docs": "docusaurus start"
   },
   "keywords": [
