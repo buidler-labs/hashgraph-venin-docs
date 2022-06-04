@@ -98,6 +98,10 @@ It's currently not possible to retrieve a `Token` once deployed but it will be [
 
 Is possible if the wallet owning the `ApiSession` is allowed to do so (the wallet account public-key is the same as the token's admin key) and can be accomplished via a `LiveToken.deleteEntity()` call.
 
+:::note
+Once deleted, certain operations such as `assignSupplyControlTo` and, in general, all network-related actions, are no longer available.
+:::
+
 #### Updating a token
 
 If the wallet owner of the `ApiSession` doing the update has the same public-key as the one configured on the token's admin key, the session can update the token via calling the `LiveToken.updateEntity(TokenFeatures)` method. Of course, `TokenFeatures` is the same object type like the one used to create a `LiveToken` (please check the discussion above).

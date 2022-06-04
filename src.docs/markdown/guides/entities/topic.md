@@ -46,6 +46,10 @@ Currently, `LiveTopic`s support sending messages via their `LiveTopic.submitMess
 
 To delete a `LiveTopic` just call its `LiveTopic.deleteEntity()`. This will succeeds if the account owning the wallet configured in the `ApiSession` has the rights to do so.
 
+:::note
+Once deleted, certain operations such as the `submitMessage` one and, in general, all network-related actions, are no longer available.
+:::
+
 #### Updating a Topic
 
 `LiveTopic`s can be updated like any other `LiveEntity`: by calling its `LiveTopic.updateEntity(TopicFeatures)` method.

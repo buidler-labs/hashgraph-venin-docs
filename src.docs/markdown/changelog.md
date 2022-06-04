@@ -3,6 +3,14 @@ id: changelog
 title: Changelog
 ---
 
+## 0.7.5
+
+- Lighten the repo by splitting it into 3: [the core one](https://github.com/buidler-labs/hedera-strato-js), [the docs, aka "this one"](https://github.com/buidler-labs/hedera-strato-docs) and [the rollup plugin](https://github.com/buidler-labs/hedera-strato-rollup)
+- Deleting `LiveEntity`s now invalidates them so that, for consistency, certain operations won't work on them anymore
+- 💥 _Potentially braking change!_ Returning `bytes` from Solidity now maps to managed (eg. `Uint8Array`) data structures
+- [`package.json` exports](https://github.com/buidler-labs/hedera-strato-js/blob/e1aa9c23999df59bf7f41345c61a2e3ecd93e1cb/package.json#L7) are now aligned with `@hashgraph/sdk`'s
+- cracked the infamous ['wall-of-text' bug](https://github.com/buidler-labs/hedera-strato-js/issues/81)
+
 ## 0.7.4
 
 - Supports `@hashgraph/sdk@2.11.3`

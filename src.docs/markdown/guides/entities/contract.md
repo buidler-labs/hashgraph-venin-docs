@@ -102,7 +102,11 @@ console.log(await liveContract.get());
 ```
 
 :::note
-When dealing with _big numbers_, the library uses the same one used by the Hedera SDK: [bignumber.js](https://github.com/MikeMcl/bignumber.js/) . This is intentional since one of the core design principles of Strato's API is to try to mimic as close as possible Hedera's own SDK return types.
+When dealing with _big numbers_, the library uses the same one used by the Hedera SDK: [bignumber.js](https://github.com/MikeMcl/bignumber.js/). This is intentional since one of the core design principles of Strato's API is to try to mimic as close as possible Hedera's own SDK return types.
+
+I say _as close as possible_ to allow for specially thought-of exceptions backed-up by common sense reasoning where the benefit in doing things in another way would be greater then following 1-to-1 with Hedera's SDK.
+
+One such exception has to do with returning `bytes` from a method. While Hedera would just return a hex-encoded string of those bytes, as of `v0.7.5`, Strato returns a managed bytes collection (eg `Uint8Array`) of bytes.
 :::
 
 #### Dealing with events

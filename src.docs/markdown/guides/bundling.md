@@ -61,15 +61,21 @@ Besides synthetically generated classes, `process.env` also needs to be unpacked
 
 ## Rollup
 
-:::caution
-Depending on how much interest is for other bundlers to be supported (see [#26](https://github.com/buidler-labs/hedera-strato-js/issues/26)), this plugin might be extracted into its own package (see [#25](https://github.com/buidler-labs/hedera-strato-js/issues/25)).
+If you're using [rollup](https://rollupjs.org/) to bundle your app, we have made available a plugin to take care of all the considerations described above. It's being available at `@buidlerlabs/rollup-plugin-hedera-strato` and you can immediately dive into a working demo [here](https://github.com/buidler-labs/hsj-rollup-demo).
 
-When this happens, we will try to maintain backwards compatibility as much as possible so that, in theory, only `import` _specifiers_ will require updating.
+If you're going down this path, you will need to first install it through something like
+
+```bash npm2yarn
+npm install --save-dev @buidlerlabs/rollup-plugin-hedera-strato
+```
+
+Importing the _rollup-plugin_ gives access to a default-exported function that generates a rollup-behaved object.
+
+:::info
+You can find more in-depth docs for our rollup-plugin in [its dedicated github page](https://github.com/buidler-labs/hedera-strato-rollup). Feel free to scroll around and bash us with any issues you might hit.
+
+Following is just a quick summary of them.
 :::
-
-If your using [rollup](https://rollupjs.org/) to bundle your app, we have made available a plugin to take care of all the considerations described above. It's being available at `@buidlerlabs/hedera-strato-js/rollup-plugin` and you can immediately dive into a working demo [here](https://github.com/buidler-labs/hsj-rollup-demo).
-
-Importing the `rollup-plugin` gives access to a default-exported function that generates a rollup-behaved object.
 
 Currently, it accepts the following options object:
 
@@ -93,8 +99,8 @@ where:
 - `includeCompiler` allows for in-browser compilation when set to `true` and throws an error when trying to compile if set to `false`. Defaults to `false`
 - `sourceMap` controls source-map generation. `true` generates the source-maps, `false` does not. Defaults to `false`
 
-:::info
+:::note
 If you're changing `contracts.path` to something non-default, be sure to also change [the `HEDERAS_CONTRACTS_RELATIVE_PATH` config](../configuration.md) value so that Strato itself knows how to locate and compile your sources and have the synthetically defined classes (eg. `ContractRegistry`) generated.
 :::
 
-For guidance, see the [demo repo rollup.config.js](https://github.com/buidler-labs/hsj-rollup-demo/blob/main/rollup.config.js) which makes use of this rollup plugin with in-browser compilation turned on.
+For further guidance, please see the [demo repo rollup.config.js](https://github.com/buidler-labs/hsj-rollup-demo/blob/main/rollup.config.js) which makes use of this rollup plugin with in-browser compilation turned on.

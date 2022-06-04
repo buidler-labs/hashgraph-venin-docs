@@ -56,6 +56,12 @@ console.log(`The answer is still: ${liveJson.theAnswer}`);
 
 You can delete a `LiveJson` via the `LiveEntity.deleteEntity` call. Just do a `LiveJson.deleteEntity()` to delete the underlying file from the network.
 
+:::note
+Once deleted, certain operations such as `getLiveEntityInfo` and, in general, all network-related actions, are no longer available.
+
+The list of restricted operations are inherited from `LiveFile` which this `LiveEntity` extends.
+:::
+
 ### Updating a Json
 
 Updating such an entry is possible via the `LiveJson.updateEntity(FileFeatures)` call with [`FileFeatures` being an object type](./file.md) used by regular `LiveFile`s.

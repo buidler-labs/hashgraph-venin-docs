@@ -53,6 +53,10 @@ Although there is no `ApiSession.getLiveJson` equivalent method available to ret
 
 To delete a deployed `File`, you have to have the wallet `ApiSession` owner be the owner of the `LiveFile` and then do a `LiveFile.deleteEntity()` call.
 
+:::note
+Once deleted, certain operations such as `getLiveEntityInfo` (to extract the content of the file, a chain operation) and, in general, all network-related actions, are no longer available.
+:::
+
 ### Updating a file object
 
 Updating is easy, just call `LiveFile.updateEntity(FileFeatures)` where `FileFeatures` is an object type defined as:
