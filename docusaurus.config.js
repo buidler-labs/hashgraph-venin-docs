@@ -29,7 +29,7 @@ module.exports = async function () {
           blog: false,
           docs: {
             editUrl:
-              "https://github.com/buidler-labs/hedera-strato-docs/edit/main/docs/",
+              "https://github.com/buidler-labs/hedera-strato-docs/edit/main/",
             exclude: ["**/src/**"],
             path: "src.docs",
             remarkPlugins: [
