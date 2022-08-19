@@ -76,6 +76,7 @@ module.exports = async function () {
           alt: "Buidler Labs Logo",
           href: "https://buidlerlabs.com/",
           src: "img/logos/buidler-labs.png",
+          width: 169,
         },
         style: "dark",
       },
