@@ -15,8 +15,8 @@ You use a `ApiSession` for that, like so:
 const { session } = await ApiSession.default();
 const liveJson = await session.upload(new Json({ theAnswer: 42 }));
 
-console.log(`Json is stored at ${liveJson.id}`);
-console.log(`The answer is: ${liveJson.theAnswer}`);
+log(`Json is stored at ${liveJson.id}`);
+log(`The answer is: ${liveJson.theAnswer}`);
 ```
 
 To make things easier, you can also upload any JS object and which will have the same end effect.
@@ -49,7 +49,7 @@ You'll need its `liveJson.id` for that which will need to be passed to `ApiSessi
 const { session } = await ApiSession.default();
 const liveJson = await session.getLiveJson({ id: "0.0.30771386" });
 
-console.log(`The answer is still: ${liveJson.theAnswer}`);
+log(`The answer is still: ${liveJson.theAnswer}`);
 ```
 
 ### Deleting a Json

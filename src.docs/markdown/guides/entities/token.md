@@ -60,7 +60,7 @@ const token = new Token({
 });
 const liveToken = await session.create(token);
 
-console.log(`Token ${liveToken.id} has been successfully created.`);
+log(`Token ${liveToken.id} has been successfully created.`);
 ```
 
 Only the `name`, `symbol` and `type` are mandatory options, the rest are optional.

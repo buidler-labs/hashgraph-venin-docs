@@ -3,6 +3,16 @@ id: changelog
 title: Changelog
 ---
 
+## [0.8.0](https://github.com/buidler-labs/hedera-strato-js/milestone/4)
+
+- Supports `@hashgraph/sdk@2.17.1`
+- Added `LiveContract` [support for deep-nested object params](https://github.com/buidler-labs/hedera-strato-js/blob/676b1cfa543714d3f9693ae78eedc4174d975cd9/test/general/specs/LiveContract.spec.ts#L201) ([#73](https://github.com/buidler-labs/hedera-strato-js/issues/73))
+- Added [library-linking support](https://github.com/buidler-labs/hedera-strato-js/blob/676b1cfa543714d3f9693ae78eedc4174d975cd9/test/issues/specs/38-library-linking.spec.ts) ([#38](https://github.com/buidler-labs/hedera-strato-js/issues/38))
+- File size chunks have been increased from `1024` to `4096`
+- Automating mapping various Hedera Entity Ids (eg. `TokenId`, `AccountId`, `FileId`, etc.) to solidity addresses ([#64](https://github.com/buidler-labs/hedera-strato-js/issues/64))
+- `@buidlerlabs/rollup-plugin-hedera-strato` has also been bumped and adjusted to support this release
+- 💥 Bumped `HEDERAS_DEFAULT_PAYMENT_FOR_CONTRACT_QUERY` from `1000000` to `20000000` to adjust for network price updates
+
 ## 0.7.5
 
 - Lighten the repo by splitting it into 3: [the core one](https://github.com/buidler-labs/hedera-strato-js), [the docs, aka "this one"](https://github.com/buidler-labs/hedera-strato-docs) and [the rollup plugin](https://github.com/buidler-labs/hedera-strato-rollup)

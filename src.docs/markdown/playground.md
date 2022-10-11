@@ -19,6 +19,7 @@ const contract = await Contract.newFrom({ code });
 const liveContract = await hapiSession.upload(contract);
 
 // TODO: stuff with your contract or switch to a different entity such as a token or Json ...
+//       log("... something ..."); ?
 ```
 
 <details>
@@ -38,7 +39,7 @@ const { session } = await ApiSession.default({
     }
   },
   network: {
-    name: testnet / previewnet / customnet
+    name: "testnet" / "previewnet" / "customnet"
   }
 });
 ```

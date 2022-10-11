@@ -31,7 +31,7 @@ Once set, you `create` it as you would do with any `CreatableEntity` and here is
 const { session } = await ApiSession.default();
 const liveTopic = await session.create(new Topic());
 
-console.log(`Topic is available at ${liveTopic.id}`);
+log(`Topic is available at ${liveTopic.id}`);
 ```
 
 ### Retrieving a Topic

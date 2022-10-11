@@ -19,9 +19,9 @@ Then get a hold of [a Session that targets a `Browser` wallet](../configuration.
 const { session } = await ApiSession.default({ wallet: { type: "Browser" } });
 const liveJson = await session.upload(new Json({ theAnswer: 42 }));
 
-console.log(`Wallet account id used: ${session.wallet.account.id}`);
-console.log(`Json is stored at ${liveJson.id}`);
-console.log(`The answer is: ${liveJson.theAnswer}`);
+log(`Wallet account id used: ${session.wallet.account.id}`);
+log(`Json is stored at ${liveJson.id}`);
+log(`The answer is: ${liveJson.theAnswer}`);
 ```
 
 :::note
@@ -33,97 +33,10 @@ Due to Hedera's pricing model as well as `Query` mechanics and, in general, over
 
 This means that only `wallet.getAccountBalance()` is supported and that, consequently, `wallet.getAccountInfo()` and `wallet.getAccountRecords()` are not.
 
-This also means that contract creation/querying is not currently supported. We plan on mitigating this with a future Strato release.
+This also means that contract creation/querying is not currently supported. We plan on mitigating this with a future Strato release by augmenting the data via [a mirror-node response](https://docs.hedera.com/guides/docs/mirror-node-api/rest-api).
 :::
 
 ## Under the hood
-
-### Hedera's [SDK implementation](https://github.com/hashgraph/hedera-sdk-js/pull/960)
-
-A `LocalWallet` and a `LocalProvider` have been developed by Hedera to wrap the traditional `Client` account-operated instance. As of `hedera-sdk-js`'s `v2.11.0`, the only way to instantiate such a wallet is through the following environmental variables:
-
-| Variable       | Description                                                                                                                                        |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| HEDERA_NETWORK | The name of the official[^local-provider-hedera-network] network used by this wallet instance. Can be one of: `testnet`, `previewnet` or `mainnet` |
-| OPERATOR_ID    | The `AccountId` of the operator paying for the wallet's transactions                                                                               |
-| OPERATOR_KEY   | The operator's private key                                                                                                                         |
-
-[^local-provider-hedera-network]: as of `v2.11.0` of the `hedera-sdk-js`, custom network definitions (such as local ones) are not supported.
-
-Following is a architecture diagram portraying the initial wallet-signer-provider implementation:
-
-```mermaid
- classDiagram
-  direction TB
-
-  LocalProvider --o LocalWallet
-  LocalProvider ..|> Provider
-  Signer <|-- Wallet
-  LocalWallet ..> SignerSignature
-  LocalWallet ..|> Wallet
-  Provider --o Wallet
-
-  class Provider {
-    <<interface>>
-    +getLedgerId() LedgerId
-    +getNetwork()
-    +getMirrorNetwork() string[]
-    +getAccountBalance(AccountId|string) Promise(AccountBalance)
-    +getAccountInfo(AccountId|string) Promise(AccountInfo)
-    +getAccountRecords(AccountId|string) Promise(TransactionRecord[])
-    +getTransactionReceipt(TransactionId|string) Promise(TransactionReceipt)
-    +waitForReceipt(TransactionResponse) Promise(TransactionReceipt)
-    +sendRequest(Executable) Promise(Executable_OutputT)
-  }
-
-  class SignerSignature {
-    +publicKey PublicKey
-    +signature Uint8Array
-    +accountId AccountId
-  }
-
-  class Signer {
-    <<interface>>
-    +getLedgerId() LedgerId
-    +getAccountId() AccountId
-    +getNetwork()
-    +getMirrorNetwork() string[]
-    +sign(Uint8Array[]) Promise(SignerSignature[])
-    +getAccountBalance() Promise(AccountBalance)
-    +getAccountInfo() Promise(AccountInfo)
-    +getAccountRecords() Promise(TransactionRecord[])
-    +signTransaction(Transaction) Promise(Transaction)
-    +checkTransaction(Transaction) Promise(Transaction)
-    +populateTransaction(Transaction) Promise(Transaction)
-    +sendRequest(Executable) Promise(Executable_OutputT)
-  }
-
-  class Wallet {
-    <<interface>>
-    +getProvider() Provider
-    +getAccountKey() Key
-  }
-
-  class LocalProvider {
-
-  }
-
-  class LocalWallet {
-
-  }
-```
-
-A couple of summarizing points here:
-
-- `Wallet` is an interface extending a `Signer` and having a `Provider` associated. It's basically the _glue_ that ties everything up
-- As such `Wallet`s are the objects that are meant to be hooked into in order to operate a Hedera session
-- The associated wallet account id information is something bound to the `Wallet` and made available through the `Signer` interface
-- `Provider`s should only bridge the implementation with the data-source (which is most likely network based)
-- `Provider`s should not have hard-coded account-ids on their instance and should, with respect to this data, be stateless
-
-For a more detailed analysis, please have a [look at the original HIP](https://hips.hedera.com/hip/hip-338).
-
-### Strato's take
 
 :::caution
 This feature is currently in active development. As such, it is very likely that the final API, once the stable release hits the streets, will differ.

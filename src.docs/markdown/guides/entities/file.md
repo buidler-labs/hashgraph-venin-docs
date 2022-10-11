@@ -19,8 +19,8 @@ An `ApiSession` with this via it's `ApiSession.upload` method like so:
 const { session } = await ApiSession.default();
 const liveFile = await session.upload(new File("Strato is easy-peasy!"));
 
-console.log(`File is stored at ${liveFile.id}`);
-console.log(`The live file content is: ${liveFile.data}`);
+log(`File is stored at ${liveFile.id}`);
+log(`The live file content is: ${liveFile.data}`);
 ```
 
 If you don't like the verbose `new File(...)` notation, you can also go for the short-hand equivalent of just providing the string itself to the `ApiSession.upload` method like so: `ApiSession.upload("Strato is easy-peasy!")`. These 2 means are equivalent. Of course, you can do the same for the other `Uint8Array` argument type.

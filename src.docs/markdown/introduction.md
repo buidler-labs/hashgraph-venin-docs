@@ -1,7 +1,7 @@
 ---
 slug: /
 id: introduction
-title: 👋 Welcome to Strato! 🌌
+title: 🔭 Welcome to Strato! 🌌
 ---
 
 <div align="center">
@@ -76,7 +76,7 @@ const helloWorldContract = await Contract.newFrom({
 });
 const liveContract = await session.upload(helloWorldContract);
 
-console.log(await liveContract.greet());
+log(await liveContract.greet());
 ```
 
   </TabItem>
@@ -148,7 +148,7 @@ const { session } = await ApiSession.default({
     }
   },
   network: {
-    name: testnet / previewnet / customnet
+    name: "testnet" / "previewnet" / "customnet"
   }
 });
 ```
@@ -156,6 +156,12 @@ const { session } = await ApiSession.default({
 Head over to our [configuration page](configuration.md) for more info on other available options.
 
 </details>
+
+:::note A note on `log`-ing
+As you might have noticed, the above example contains a `log` call for which there is no function definition provided. This is intentional and has been provided as a behind-the-scene convenience function replacing the previously-used, `console.log` variant and freeing it up to target the good-ol'-fashion browser console that we all love-and-dread.
+
+This tends to make the code a little bit non-portable (aka: _you can't copy paste it directly from browser_ and expect it to work), but this can be easily solved by virtually replacing all `log`s with `console.log`s.
+:::
 
 In both cases, we've left out the error handling part for brevity. Besides that, the Hedera code assumes that the developer has precompiled the contract and that its bytecode is provided to it via the `./hello_world.json` file. Strato does not enforce such an assumption. It takes care of the underlying compilation so that the developer does not have to.
 
@@ -173,7 +179,7 @@ const { session } = await ApiSession.default();
 const helloWorldContract = await Contract.newFrom({ code });
 const liveContract = await session.upload(helloWorldContract);
 
-console.log(await liveContract.greet());
+log(await liveContract.greet());
 ```
 
 ... you get the idea. **It's that simple!**

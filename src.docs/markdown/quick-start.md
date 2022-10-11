@@ -45,14 +45,10 @@ const liveContract = await session.upload(counterContract);
 
 // Increment then retrieve the counter
 await liveContract.inc();
-console.log(await liveContract.get());
+log(await liveContract.get());
 ```
 
-:::note
-We need the `.toNumber` call since the returned value of calling the `get` method is an `uint` which [maps to a `BigNumber`](https://mikemcl.github.io/bignumber.js/) and `console.log` does not know how to display such instances.
-:::
-
-By convention, when calling `Contract.newFrom` passing it a `path`, Strato expects to find the solidity contract code in the `contracts` folder. This is configurable via the `HEDERAS_CONTRACTS_RELATIVE_PATH` environment variable.
+By convention, when calling `Contract.newFrom` and passing it a `path` of a `.sol` file, Strato expects to find the solidity contract code in the `contracts` folder. This is configurable via the `HEDERAS_CONTRACTS_RELATIVE_PATH` environment variable.
 
 If you were to run this code snippet, you would end up with a complaint issued by `ApiSession.default` saying something about a network not available issue. That's because Strato does not know, out of the box, to which network you want to connect.
 
@@ -84,7 +80,7 @@ Make sure to replace the values as you see fit:
 - `HEDERAS_NETWORK` : can be either one of the official networks (`previewnet`, `testnet` or `mainnet`) or, for a more close-tight experience, `customnet`
 - `HEDERAS_OPERATOR_ID` and `HEDERAS_OPERATOR_KEY` are the operator's account id and private key which will pay for the transactions.
 
-If you don't have a pair of operator credentials, you can create a `testnet`/`previewnet` account for free if you register on the [Hedera Portal](https://portal.hedera.com/register).
+If you don't have a pair of operator credentials, you can create a `testnet`/`previewnet` account for free if you register on the [Hedera Portal](https://portal.hedera.com/register). Once created, your test-account will auto top-up daily, free of charge, to `10000`ℏ.
 
 Having the `.env` file available with the required values is enough to allow for successfully re-running the above example.
 

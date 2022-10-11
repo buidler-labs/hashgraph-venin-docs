@@ -3,7 +3,7 @@ id: session
 title: The Session
 ---
 
-Sessions are the life-blood of the library. Virutally, you can't do anything meaningful without one.
+Sessions are the life-blood of the library. Virtually, you can't do anything meaningful (aka _on network_) without one.
 
 ## Creating a session
 
@@ -41,7 +41,7 @@ const { session } = await ApiSession.default();
 const contract = await Contract.newFrom({ code });
 const receiptsSubscription = session.subscribeToReceiptsWith(
   ({ transaction, receipt }) => {
-    console.log(
+    log(
       `Transaction ${transaction.transactionId} receipt reported finishing with status ${receipt.status}`
     );
   }

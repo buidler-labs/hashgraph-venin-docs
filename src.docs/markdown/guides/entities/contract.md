@@ -39,7 +39,7 @@ const liveContract = await session.upload(helloWorldContract, {
   _file: { fileMemo: "Hello Strato" },
 });
 
-console.log(await liveContract.greet());
+log(await liveContract.greet());
 ```
 
 #### Constructor parameters
@@ -67,7 +67,7 @@ const liveContract = await session.upload(
   "Strato is amazing!"
 );
 
-console.log(await liveContract.message());
+log(await liveContract.message());
 ```
 
 This uploads a `contract` with a `gas` create-contract transaction set to 100,000tℏ and calling the `contract`'s constructor passing in the string `Strato is amazing!`.
@@ -87,7 +87,7 @@ const liveContract = await session.upload(contract);
 
 await liveContract.inc();
 await liveContract.inc();
-console.log(await liveContract.get());
+log(await liveContract.get());
 ```
 
 Of course, function arguments are also supported so if we have such a live-contract function ([solidity-by-example's State Variable](https://solidity-by-example.org/state-variables/) code, [for instance](https://github.com/buidler-labs/hedera-strato-js/blob/90bc1075892844bc46bf6e3fd191817622ee675d/test/LiveContract.spec.ts#L111)), you can call into these methods, passing in the expected values as expected.
@@ -98,7 +98,7 @@ const contract = await Contract.newFrom({ path: "./state_variables.sol" });
 const liveContract = await session.upload(contract);
 
 await liveContract.set(42);
-console.log(await liveContract.get());
+log(await liveContract.get());
 ```
 
 :::note
@@ -119,7 +119,7 @@ const contract = await Contract.newFrom({ path: "./events.sol" });
 const liveContract = await session.upload(contract);
 
 liveContract.onEvent("Log", ({ sender, message }) => {
-  console.log(`Log event received: ${message}`);
+  log(`Log event received: ${message}`);
 });
 
 await liveContract.test();
@@ -136,7 +136,7 @@ const { liveContract, logs } = await session.upload(contract, {
   _contract: { emitConstructorLogs: true },
 });
 
-console.log(JSON.stringify(logs));
+log(JSON.stringify(logs));
 ```
 
 As you can see from running the above snippet, the resulting `logs` are an array of objects which adhere to the following schema:
@@ -162,7 +162,7 @@ const contract = await Contract.newFrom({ path: "./state_variables.sol" });
 const liveContract = await session.upload(contract);
 
 await liveContract.set({ maxTransactionFee: 100000 }, 42);
-console.log(await liveContract.get());
+log(await liveContract.get());
 ```
 
 ### Retrieving deployed contracts
@@ -183,7 +183,7 @@ const liveContract = await session.getLiveContract({
 });
 const bigNumberGetResult = await liveContract.get();
 
-console.log(bigNumberGetResult.toNumber());
+log(bigNumberGetResult.toNumber());
 ```
 
 :::note

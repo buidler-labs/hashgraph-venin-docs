@@ -11,7 +11,7 @@ If you want to create such entities, it's as simple as
 const { session } = await ApiSession.default();
 const liveAccount = await session.create(new Account());
 
-console.log(liveAccount.id);
+log(liveAccount.id);
 ```
 
 If you want more control over the resulting account, you can give it some constructor args such as:
@@ -36,7 +36,7 @@ const liveAccount = await session.create(
   new Account({ keyType: KeyType.ECDSA })
 );
 
-console.log(liveAccount.id);
+log(liveAccount.id);
 ```
 
 ### Using it
