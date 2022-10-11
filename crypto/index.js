@@ -19,6 +19,11 @@ function bootstrap(webpackConfig) {
       patterns: [{ from: path.join(__dirname, "./libs"), to: "static/js" }],
     })
   );
+  webpackConfig.externals = {
+    "https://unpkg.com/bignumber.js@9.0.2/bignumber.mjs":
+      "https://unpkg.com/bignumber.js@9.0.2/bignumber.mjs",
+    ...webpackConfig.externals,
+  };
 }
 
 module.exports = {

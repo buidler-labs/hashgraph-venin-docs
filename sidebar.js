@@ -9,6 +9,7 @@ module.exports = {
     },
     {
       collapsible: true,
+      collapsed: false,
       items: [
         {
           id: "markdown/quick-start",
