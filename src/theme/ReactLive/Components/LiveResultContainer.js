@@ -1,7 +1,8 @@
 import * as React from "react";
-import BrowserOnly from "@docusaurus/core/lib/client/exports/BrowserOnly";
 import { LiveContext } from "react-live";
 import { renderToString } from "react-dom/server";
+import BrowserOnly from "@docusaurus/core/lib/client/exports/BrowserOnly";
+
 import styles from "../../Playground/styles.module.css";
 
 function LivePreviewLoader() {
@@ -24,9 +25,8 @@ const LiveResultContainer = ({ isRunning, error, errorCallback }) => {
 };
 
 const LogsResult = ({ isRunning }) => {
-  const context = React.useContext(LiveContext);
+  const { element: Element } = React.useContext(LiveContext);
   const [logs, setLogs] = React.useState();
-  const { element: Element } = context;
 
   React.useEffect(() => {
     const logsHTML = Element ? renderToString(<Element />) : null;
@@ -34,7 +34,7 @@ const LogsResult = ({ isRunning }) => {
     if (logsHTML) {
       setLogs(logsHTML);
     }
-  }, [context]);
+  }, [Element]);
 
   const LiveLogsContainer = Element ? (
     <div className={styles.playgroundPreview}>
@@ -51,13 +51,13 @@ const LogsResult = ({ isRunning }) => {
 };
 
 const ErrorResult = ({ error, errorCallback }) => {
-  const context = React.useContext(LiveContext);
+  const { error: ctxError } = React.useContext(LiveContext);
 
   React.useEffect(() => {
-    if (context.error) {
-      errorCallback(context.error);
+    if (ctxError) {
+      errorCallback(ctxError);
     }
-  }, [context]);
+  }, [ctxError]);
 
   return error ? <pre style={{ color: "red" }}>{error}</pre> : null;
 };

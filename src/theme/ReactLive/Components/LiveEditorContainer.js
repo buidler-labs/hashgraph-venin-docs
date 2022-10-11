@@ -1,16 +1,12 @@
 import * as React from "react";
-import { LiveEditor } from "react-live";
+import { LiveEditor, LiveContext } from "react-live";
 import Translate from "@docusaurus/core/lib/client/exports/Translate";
 import clsx from "clsx";
 import styles from "../../Playground/styles.module.css";
-import useIsBrowser from "@docusaurus/core/lib/client/exports/useIsBrowser";
 
-const LiveEditorContainer = ({
-  isRunning,
-  onRunAction,
-  onChange,
-  disabled,
-}) => {
+const LiveEditorContainer = ({ isRunning, onRunAction, onChange }) => {
+  const { disabled } = React.useContext(LiveContext);
+
   return (
     <>
       <Header>
@@ -21,7 +17,11 @@ const LiveEditorContainer = ({
           Live Editor
         </Translate>
       </Header>
-      <ThemedLiveEditor onChange={onChange} disabled={isRunning} />
+      <LiveEditor
+        className={styles.playgroundEditor}
+        disabled={disabled || isRunning}
+        onChange={onChange}
+      />
       <Header>
         <button
           className={styles.playgroundRunButton}
@@ -34,18 +34,6 @@ const LiveEditorContainer = ({
     </>
   );
 };
-
-function ThemedLiveEditor({ onChange, disabled }) {
-  const isBrowser = useIsBrowser();
-  return (
-    <LiveEditor
-      key={isBrowser}
-      className={styles.playgroundEditor}
-      onChange={onChange}
-      disabled={disabled}
-    />
-  );
-}
 
 function Header({ children }) {
   return <div className={clsx(styles.playgroundHeader)}>{children}</div>;

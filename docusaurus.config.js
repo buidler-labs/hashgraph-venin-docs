@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
-const stratoLibInfo = require("./node_modules/@buidlerlabs/hedera-strato-js/package.json");
+const stratoLibInfo = require("./crypto/node_modules/@buidlerlabs/hedera-strato-js/package.json");
 const remarkMermaid = require("mdx-mermaid");
 const remarkNpm2Yarn = require("@docusaurus/remark-plugin-npm2yarn");
 const remarkNumberedFootnoteLabels = require("remark-numbered-footnote-labels");
+const { bootstrap: bootstrapWebConfigForCrypto } = require("./crypto");
 
 module.exports = async function () {
   const remarkGfm = (await import("remark-gfm")).default;
@@ -21,6 +22,14 @@ module.exports = async function () {
         },
       ],
       "@docusaurus/theme-live-codeblock",
+      async function CryptoLibs(context, options) {
+        return {
+          name: "crypto-libs",
+          configureWebpack(config, isServer, utils, content) {
+            return bootstrapWebConfigForCrypto(config);
+          },
+        };
+      },
     ],
     presets: [
       [
@@ -54,12 +63,6 @@ module.exports = async function () {
       ],
     ],
     projectName: "hedera-strato-js",
-    scripts: [
-      {
-        src: "/js/app.js",
-        type: "module",
-      },
-    ],
     staticDirectories: ["static"],
     tagline: "Write Hedera dApps like a boss because why not?",
     themeConfig: {

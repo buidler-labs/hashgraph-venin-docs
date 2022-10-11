@@ -1,0 +1,48 @@
+{
+  "name": "buidlerlabs-crypto",
+  "version": "0.6.9",
+  "description": "Support for Hedera & Strato Web3 workings",
+  "private": true,
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./hedera-strato": "./libs/hedera-strato-js.js",
+    "./hedera-wallet-bridges": "./libs/hedera-wallet-bridges",
+    "./hashgraph-sdk": "./libs/hashgraph-sdk.js"
+  },
+  "scripts": {
+    "bundle:strato": "rollup -c strato/rollup.config.mjs",
+    "bundle:wallet-bridge": "rollup -c wallet-bridge/rollup.config.js",
+    "bundle:hashgraph-sdk": "rollup -c hashgraph-sdk/rollup.config.js",
+    "bundle:libs": "env-cmd run-s bundle:hashgraph-sdk bundle:wallet-bridge bundle:strato"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.16.7",
+    "@buidlerlabs/rollup-plugin-hedera-strato": "~0.8.0",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "buffer": "^6.0.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "crypto-browserify": "^3.12.0",
+    "env-cmd": "^10.1.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^2.78.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "stream-browserify": "^3.0.0"
+  },
+  "dependencies": {
+    "@buidlerlabs/hedera-strato-js": "~0.8.0",
+    "@hashgraph/sdk": "^2.11.3",
+    "@openzeppelin/contracts": "^4.7.3",
+    "hashconnect": "^0.2.2",
+    "webpack": "^5.74.0"
+  }
+}

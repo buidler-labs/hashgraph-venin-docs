@@ -1,48 +1,54 @@
 /* eslint-env node */
 
+import { join as pathJoin } from "path";
+
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
-import json from "@rollup/plugin-json";
-import nodePolyfills from "rollup-plugin-node-polyfills";
 import resolve from "@rollup/plugin-node-resolve";
-import strato from "@buidlerlabs/hedera-strato-js/rollup-plugin";
+import nodePolyfills from "rollup-plugin-node-polyfills";
 import { terser } from "rollup-plugin-terser";
+import replace from "@rollup/plugin-replace";
 
-import dotenv from "dotenv";
-dotenv.config();
+const isInDevelopment = process.env.NODE_ENV !== "production";
+
+function getPathOf(file) {
+  return pathJoin(__dirname, file);
+}
 
 export default async function getConfig() {
   return {
     context: "window",
-    external: ["lodash-es/merge"],
-    input: "./src/app/main.ts",
+    external: ["@hashgraph/sdk"],
+    input: "./src/wallet.ts",
     output: [
       {
-        file: "./static/js/app.js",
+        file: getPathOf("../libs/hedera-wallet-bridges.js"),
         format: "esm",
         paths: {
-          "lodash-es/merge": "https://unpkg.com/lodash-es@4.17.21/merge.js",
+          "@hashgraph/sdk": "./hashgraph-sdk.js",
         },
-        plugins: [terser()],
-        sourcemap: true,
+        plugins: [!isInDevelopment && terser()],
+        sourcemap: isInDevelopment,
       },
     ],
     plugins: [
-      strato({
-        includeCompiler: true,
-        sourceMap: true,
-      }),
       resolve({
-        extensions: [".ts", ".js"],
+        extensions: [".ts"],
         mainFields: ["browser", "module", "main"],
         preferBuiltins: false,
+        rootDir: getPathOf("."),
       }),
       commonjs({
         esmExternals: true,
         requireReturnsDefault: "preferred",
       }),
+      replace({
+        "global.Buffer = global.Buffer || require('buffer').Buffer;": "",
+        'console.log("process", e);': "",
+        delimiters: ["", ""],
+      }),
       nodePolyfills({
-        sourceMap: true,
+        sourceMap: isInDevelopment,
       }),
       babel({
         babelHelpers: "runtime",
@@ -53,8 +59,7 @@ export default async function getConfig() {
           ["@babel/typescript"],
         ],
       }),
-      json(),
     ],
-    treeshake: true,
+    treeshake: !isInDevelopment,
   };
 }

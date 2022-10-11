@@ -2,11 +2,16 @@
 
 import "./ConnectWallet.style.css";
 import React from "react";
+import { StratoContext } from "../theme/Root";
 
-const HASHCONNECT_DATA_KEY = "hashpack-data";
+const appMetadata = {
+  description: "Hedera Strato Documentation",
+  icon: "https://www.hashpack.app/img/logo.svg",
+  name: "hStrato",
+};
 
 export const HeadStarterConnectWallet = () => {
-  const tryToSetWallet = (wallet) => {
+  const trySettingWallet = (wallet) => {
     if (!wallet) return;
 
     const fetchBalance = async () => {
@@ -14,86 +19,60 @@ export const HeadStarterConnectWallet = () => {
       return _balance && _balance.hbars;
     };
 
-    fetchBalance()
-      .then((bal) => {
-        setState((_prevState) => ({
-          balance: bal.toString(),
-          connected: true,
-          wallet,
-        }));
-      })
-      .catch(() => {
-        setState((prevState) => ({
-          ...prevState,
-          connected: true,
-          wallet,
-        }));
-      });
-  };
-
-  const [state, setState] = React.useState({
-    balance: null,
-    connected: false,
-    wallet: null,
-  });
-
-  const handleOnConnect = async () => {
-    const operator = await fetch(
-      "https://eu2.contabostorage.com/963797152a304f4bb7f75cc0af884bd7:buidler-labs/projects/hedera-strato-js/docs-operator.json"
-    )
-      .then((docsOperatorResponse) =>
-        docsOperatorResponse.body.getReader().read()
-      )
-      .then(({ value }) => new TextDecoder().decode(value))
-      .then((rawDocsOperator) => JSON.parse(rawDocsOperator));
-
-    try {
-      await window.connectWallet(operator.network);
-      setState((prevState) => ({
-        ...prevState,
-        connected: true,
-      }));
-    } catch (e) {
-      alert(e);
-    }
-  };
-
-  const handleOnDisconnect = () => {
-    window.disconnectWallet();
-
-    setState({
-      balance: null,
-      connected: false,
-      wallet: null,
+    window["hedera"] = wallet;
+    setWallet(wallet);
+    fetchBalance().then((bal) => {
+      setBalance(bal.toString());
     });
   };
 
-  window.addEventListener("message", ({ data: key }) => {
-    if (key !== "WalletLoaded") return;
+  const { Bridges } = React.useContext(StratoContext);
+  const [balance, setBalance] = React.useState(null);
+  const [wallet, setWallet] = React.useState(null);
 
-    tryToSetWallet(window["hedera"]);
-  });
-  if (!state.wallet) {
-    tryToSetWallet(window["hedera"]);
-  }
+  const onConnectClicked = async () => {
+    Bridges.HashPackWallet.newConnection({
+      networkName: "testnet",
+      debug: false,
+      appMetadata,
+    }).then((wConn) => {
+      trySettingWallet(wConn);
+    });
+  };
 
-  window.addEventListener("storage", (e) => {
-    if (e.key === HASHCONNECT_DATA_KEY && !e.newValue) {
-      window.disconnectWallet();
-    }
-  });
+  const onDisconnectClicked = () => {
+    wallet.disconnect();
+    setBalance(null);
+    setWallet(null);
+  };
+
+  React.useEffect(() => {
+    if (!Bridges) return;
+
+    Bridges.HashPackWallet.getConnection(false).then((wConn) => {
+      if (wConn !== null) {
+        trySettingWallet(wConn);
+      }
+    });
+  }, [Bridges]);
 
   return (
     <center style={{ margin: "16px" }}>
-      {state.connected && state.wallet ? (
+      {wallet ? (
         <ConnectedStats
-          accountId={state.wallet.getAccountId().toString() || ""}
-          balance={state.balance}
-          onDisconnect={handleOnDisconnect}
+          accountId={wallet.getAccountId().toString() || ""}
+          balance={balance}
+          onDisconnect={onDisconnectClicked}
         />
       ) : (
-        <button className="wallet-connect connect" onClick={handleOnConnect}>
-          CONNECT WALLET
+        <button
+          className={
+            Bridges ? "wallet-connect connect" : "wallet-connect loading"
+          }
+          enabled={Bridges != null}
+          onClick={onConnectClicked}
+        >
+          {Bridges ? "CONNECT WALLET" : "Loading"}
         </button>
       )}
     </center>
@@ -105,7 +84,7 @@ const ConnectedStats = ({ accountId, balance, onDisconnect }) => {
     <div className="connected-stats">
       <div className="info">
         <span className="id">{accountId}</span>
-        <span className="balance">{balance}</span>
+        <span className="balance">{balance ? balance : "-"}</span>
       </div>
       <button className="wallet-connect disconnect" onClick={onDisconnect}>
         Disconnect

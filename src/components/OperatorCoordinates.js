@@ -3,46 +3,22 @@
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import React from "react";
 
-let promisedS3OperatorInfo = null;
-
-async function getS3Operator() {
-  if (!promisedS3OperatorInfo) {
-    promisedS3OperatorInfo = fetch(
-      "https://eu2.contabostorage.com/963797152a304f4bb7f75cc0af884bd7:buidler-labs/projects/hedera-strato-js/docs-operator.json"
-    )
-      .then((docsOperatorResponse) =>
-        docsOperatorResponse.body.getReader().read()
-      )
-      .then(({ value }) => new TextDecoder().decode(value))
-      .then((rawDocsOperator) => JSON.parse(rawDocsOperator));
-  }
-  return promisedS3OperatorInfo;
-}
+import { StratoContext } from "../theme/Root";
 
 export const OperatorId = () => {
-  const [operator, setOperator] = React.useState({
-    accountId: "unknown",
-    network: "unknown",
-  });
-
-  React.useEffect(() => {
-    getS3Operator().then((docsOperator) => setOperator(docsOperator));
-  }, []);
+  const { bundledWalletInfo } = React.useContext(StratoContext);
 
   return (
     <BrowserOnly fallback={<code>unknown</code>}>
       {() =>
-        operator.network === "testnet" ? (
+        bundledWalletInfo ? (
           <a
-            href={
-              "https://testnet.dragonglass.me/hedera/accounts/" +
-              operator.accountId
-            }
+            href={`https://hashscan.io/#/${bundledWalletInfo.network}/account/${bundledWalletInfo.accountId}`}
           >
-            <code>{operator.accountId}</code>
+            <code>{bundledWalletInfo.accountId}</code>
           </a>
         ) : (
-          <code>{operator.accountId}</code>
+          <code>unknown</code>
         )
       }
     </BrowserOnly>
@@ -50,18 +26,13 @@ export const OperatorId = () => {
 };
 
 export const OperatorNetwork = () => {
-  const [operator, setOperator] = React.useState({
-    accountId: "unknown",
-    network: "unknown",
-  });
-
-  React.useEffect(() => {
-    getS3Operator().then((docsOperator) => setOperator(docsOperator));
-  }, []);
+  const { bundledWalletInfo } = React.useContext(StratoContext);
 
   return (
     <BrowserOnly fallback={<code>unknown</code>}>
-      {() => <code>{operator.network}</code>}
+      {() => (
+        <code>{bundledWalletInfo ? bundledWalletInfo.network : "unknown"}</code>
+      )}
     </BrowserOnly>
   );
 };

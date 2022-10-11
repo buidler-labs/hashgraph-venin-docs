@@ -7,7 +7,6 @@ class LiveEventEmitter {
     if (!this._events[name]) {
       this._events[name] = [];
     }
-
     this._events[name].push(listener);
   }
 
@@ -17,14 +16,11 @@ class LiveEventEmitter {
 
   emit(name, data) {
     if (!this._events[name]) {
-      throw new Error(`Can't emit an event. Event "${name}" doesn't exits.`);
+      // No one is listening, don't do anything
+      return;
     }
 
-    const fireCallbacks = (callback) => {
-      callback(data);
-    };
-
-    this._events[name].forEach(fireCallbacks);
+    this._events[name].forEach((clb) => clb(data));
   }
 }
 

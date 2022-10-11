@@ -12,6 +12,11 @@
   color: #fff;
 }
 
+.wallet-connect.loading {
+  background-color: #6b8385;
+  color: #fff;
+}
+
 .wallet-connect.disconnect {
   background-color: #58c4cc;
   color: #fff;
