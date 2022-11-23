@@ -7,7 +7,7 @@ Currently we offer support for bundling strato via [rollup](https://rollupjs.org
 
 ### General considerations
 
-Strato is delivered in both `es-module` and `common-js` formats. The challenge with bundling the library boils down to whether or not you wish to use the `SolidityCompiler` function in-browser. If you wish in-browser compilation, a web-worker is provided which fetches the appropriate solidity-compiler binary before carring out the compilation itself via calling any of the `Contract.newFrom`/`Contract.allFrom` family of functions.
+Venin is delivered in both `es-module` and `common-js` formats. The challenge with bundling the library boils down to whether or not you wish to use the `SolidityCompiler` function in-browser. If you wish in-browser compilation, a web-worker is provided which fetches the appropriate solidity-compiler binary before carring out the compilation itself via calling any of the `Contract.newFrom`/`Contract.allFrom` family of functions.
 
 Compiling `path` variants of the same `Contract.newFrom`/`Contract.allFrom` family of functions is made possible via a synthetically injected `ContractsInFileStorage` class which is basically a dictionary mapping the path of each solidity file from a given folder (default `contracts`) to its content.
 
@@ -100,7 +100,7 @@ where:
 - `sourceMap` controls source-map generation. `true` generates the source-maps, `false` does not. Defaults to `false`
 
 :::note
-If you're changing `contracts.path` to something non-default, be sure to also change [the `HEDERAS_CONTRACTS_RELATIVE_PATH` config](../configuration.md) value so that Strato itself knows how to locate and compile your sources and have the synthetically defined classes (eg. `ContractRegistry`) generated.
+If you're changing `contracts.path` to something non-default, be sure to also change [the `HEDERAS_CONTRACTS_RELATIVE_PATH` config](../configuration.md) value so that Venin itself knows how to locate and compile your sources and have the synthetically defined classes (eg. `ContractRegistry`) generated.
 :::
 
 For further guidance, please see the [demo repo rollup.config.js](https://github.com/buidler-labs/hsj-rollup-demo/blob/main/rollup.config.js) which makes use of this rollup plugin with in-browser compilation turned on.

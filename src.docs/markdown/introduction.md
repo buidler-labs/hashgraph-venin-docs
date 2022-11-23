@@ -1,7 +1,7 @@
 ---
 slug: /
 id: introduction
-title: 🔭 Welcome to Strato! 🌌
+title: 🔭 Welcome to Venin! 🌌
 ---
 
 <div align="center">
@@ -29,7 +29,7 @@ import { OperatorId, OperatorNetwork } from '@site/src/components/OperatorCoordi
 :::note Disclaimer
 This project is not an official Hedera project. It is an independent, community driven, effort to bring clarity and _joy_ towards developing smart-contract applications on the Hedera network-chain ecosystem.
 
-Having said that, we have been [featured on Hedera's blog](https://hedera.com/blog/meet-strato-a-concise-yet-powerful-sdk-alternative-for-js-devs) and, hopefully, will continue to be so as Strato draws closer to a more stable-badge status.
+Having said that, we have been [featured on Hedera's blog](https://hedera.com/blog/meet-strato-a-concise-yet-powerful-sdk-alternative-for-js-devs) and, hopefully, will continue to be so as Venin draws closer to a more stable-badge status.
 :::
 
 :::caution
@@ -40,7 +40,7 @@ We will continue to use it "as is" in production even in this initial stage just
 
 ## The drive
 
-As any good-striving, long-lasting, endeavour, we are using Strato to hopefully fuel everything that we, here at [Buidler Labs](https://buidlerlabs.com/), build on Hedera. Our Hedera portfolio currently consists of:
+As any good-striving, long-lasting, endeavour, we are using Venin to hopefully fuel everything that we, here at [Buidler Labs](https://buidlerlabs.com/), build on Hedera. Our Hedera portfolio currently consists of:
 
 - [FileCoin-Hedera Grant](https://github.com/taskbar-team/hedera-filecoin-devgrant) - a development grant used to put the foundations of [MyTaskbar](https://mytaskbar.io/) v2, the more decentralized version
 - [HeadStarter](https://headstarter.org) - the first Hedera IDO platform
@@ -65,9 +65,9 @@ contract HelloWorld {
 // highlight-end
 ```
 
-Here's how you would do it in Strato:
+Here's how you would do it in Venin:
 <Tabs>
-<TabItem value="strato-code" label="Strato">
+<TabItem value="strato-code" label="Venin">
 
 ```js live=true containerKey=greet_from_path
 const { session } = await ApiSession.default();
@@ -132,7 +132,7 @@ console.log(greet);
 _(click on the "Hedera" tab to find out what would be the equivalent of this snippet written solely using the [official Hedera SDK JS library](https://github.com/hashgraph/hedera-sdk-js))_
 
 <details>
-  <summary>Oh, by the way, if you haven't done it already, click <code>Run</code> on the <code>Strato</code> tab. See what happens.</summary>
+  <summary>Oh, by the way, if you haven't done it already, click <code>Run</code> on the <code>Venin</code> tab. See what happens.</summary>
 
 It should run the code targeting the <OperatorId /> account id on the <OperatorNetwork /> network. We strive to keep a working balance on it, but if we can't keep up with the usage, you can also
 use your own hedera account instead. [Hedera's Portal](https://portal.hedera.com/) is the best and easiest way to start in this sense.
@@ -163,7 +163,7 @@ As you might have noticed, the above example contains a `log` call for which the
 This tends to make the code a little bit non-portable (aka: _you can't copy paste it directly from browser_ and expect it to work), but this can be easily solved by virtually replacing all `log`s with `console.log`s.
 :::
 
-In both cases, we've left out the error handling part for brevity. Besides that, the Hedera code assumes that the developer has precompiled the contract and that its bytecode is provided to it via the `./hello_world.json` file. Strato does not enforce such an assumption. It takes care of the underlying compilation so that the developer does not have to.
+In both cases, we've left out the error handling part for brevity. Besides that, the Hedera code assumes that the developer has precompiled the contract and that its bytecode is provided to it via the `./hello_world.json` file. Venin does not enforce such an assumption. It takes care of the underlying compilation so that the developer does not have to.
 
 Speaking of that, here's a more self-contained code snippet version that basically does the same thing, but gives even more in-browser control to play around with:
 
@@ -194,7 +194,7 @@ Another option would be to just code in-browser using our [playground](playgroun
 
 ## Features
 
-Strato already is packed with a lot of stuff:  
+Venin already is packed with a lot of stuff:  
 ✔️ Compile a Solidity contract to obtain its Hedera accepted ABI directly from within the library (no external compiler required)  
 ✔️ Deploy a contract to the network  
 ✔️ Use a fluent API to interact with deployed, _live entities_ such as contracts  
@@ -219,7 +219,7 @@ Strato already is packed with a lot of stuff:
 
 ## Contributions
 
-Do you think we missed anything? Want some important feature prioritized? Do you have an idea of something that we might improve? Head over to [our issues page](https://github.com/buidler-labs/hedera-strato-js/issues) and let us know! We want Strato to be a community-lead initiative. This means that any opinion or critic is encouraged (and even welcomed)!
+Do you think we missed anything? Want some important feature prioritized? Do you have an idea of something that we might improve? Head over to [our issues page](https://github.com/buidler-labs/hedera-strato-js/issues) and let us know! We want Venin to be a community-lead initiative. This means that any opinion or critic is encouraged (and even welcomed)!
 
 Of course, if you're eager to write it yourself, that's also fine and dandy! Just fork us, add your changes and open a pull request. We'll take it from there ...
 

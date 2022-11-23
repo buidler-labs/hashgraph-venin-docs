@@ -79,6 +79,6 @@ Following this, you could get rid of the `{ emitReceipt: true }` meta-argument a
 
 Setting `emitReceipt` meta-argument to true on contract functions that do not modify state will not have any effect.
 
-`pure`/`view` solidity functions resolve to a `ContractCallQuery` that is being executed in Strato, which returns a `ContractFunctionResult`. The result of the contract call does not contain receipts or records as the call runs on a single node.
+`pure`/`view` solidity functions resolve to a `ContractCallQuery` that is being executed in Venin, which returns a `ContractFunctionResult`. The result of the contract call does not contain receipts or records as the call runs on a single node.
 
 :::

@@ -2,12 +2,12 @@
 
 import "./ConnectWallet.style.css";
 import React from "react";
-import { StratoContext } from "../theme/Root";
+import { VeninContext } from "../theme/Root";
 
 const appMetadata = {
-  description: "Hedera Strato Documentation",
+  description: "Hedera Venin Documentation",
   icon: "https://www.hashpack.app/img/logo.svg",
-  name: "hStrato",
+  name: "hVenin",
 };
 
 export const HeadStarterConnectWallet = () => {
@@ -26,7 +26,7 @@ export const HeadStarterConnectWallet = () => {
     });
   };
 
-  const { Bridges } = React.useContext(StratoContext);
+  const { Bridges } = React.useContext(VeninContext);
   const [balance, setBalance] = React.useState(null);
   const [wallet, setWallet] = React.useState(null);
 

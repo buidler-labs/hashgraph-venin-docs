@@ -5,7 +5,7 @@ title: File
 
 ### Why?
 
-Strato can store generic-content files using Hedera's File Service. This can be anything: from ascii text to binary files. Anything you want to store and are willing to pay Hedera's storage fee, the network will host it.
+Venin can store generic-content files using Hedera's File Service. This can be anything: from ascii text to binary files. Anything you want to store and are willing to pay Hedera's storage fee, the network will host it.
 
 :::info
 `LiveFile` is the basis of [`LiveJson`](./json.md) which is another type of file-content stored on Hedera, one dealing with structured JSON data.
@@ -17,19 +17,19 @@ An `ApiSession` with this via it's `ApiSession.upload` method like so:
 
 ```js live=true containerKey=store_a_file
 const { session } = await ApiSession.default();
-const liveFile = await session.upload(new File("Strato is easy-peasy!"));
+const liveFile = await session.upload(new File("Venin is easy-peasy!"));
 
 log(`File is stored at ${liveFile.id}`);
 log(`The live file content is: ${liveFile.data}`);
 ```
 
-If you don't like the verbose `new File(...)` notation, you can also go for the short-hand equivalent of just providing the string itself to the `ApiSession.upload` method like so: `ApiSession.upload("Strato is easy-peasy!")`. These 2 means are equivalent. Of course, you can do the same for the other `Uint8Array` argument type.
+If you don't like the verbose `new File(...)` notation, you can also go for the short-hand equivalent of just providing the string itself to the `ApiSession.upload` method like so: `ApiSession.upload("Venin is easy-peasy!")`. These 2 means are equivalent. Of course, you can do the same for the other `Uint8Array` argument type.
 
 If you need to tweak the underlying file-transaction options when storing the content, you can use the `upload`s meta-arguments. For instance, if you want to add a memo, just pass it a `{ _file: { memo: "true facts" } }` when `upload`ing, like so:
 
 ```js
 const { session } = await ApiSession.default();
-const liveFile = await session.upload("Strato is easy-peasy-er!", {
+const liveFile = await session.upload("Venin is easy-peasy-er!", {
   _file: { memo: "true facts" },
 });
 

@@ -1,21 +1,21 @@
 // see https://docusaurus.io/docs/swizzling#wrapper-your-site-with-root
 import React from "react";
 
-export const StratoContext = React.createContext({});
+export const VeninContext = React.createContext({});
 
 export default function Root({ children }) {
   const [bundledWalletInfo, setBundledWalletInfo] = React.useState(null);
   const [wallet, setWallet] = React.useState(null);
   const [Bridges, setBridges] = React.useState(null);
-  const [Strato, setStrato] = React.useState(null);
+  const [Venin, setVenin] = React.useState(null);
 
   React.useEffect(() => {
     import(
       /* webpackIgnore: true */
-      "/js/hedera-strato-js.js"
-    ).then((Strato) => {
-      setStrato(Strato);
-      Strato.ApiSession.default().then(({ session }) => {
+      "/js/hedera-venin-js.js"
+    ).then((Venin) => {
+      setVenin(Venin);
+      Venin.ApiSession.default().then(({ session }) => {
         setBundledWalletInfo({
           network: session.network.name,
           accountId: session.client.wallet.accountId.toString(),
@@ -31,11 +31,11 @@ export default function Root({ children }) {
   }, []);
 
   const ctxValue = React.useMemo(
-    () => ({ bundledWalletInfo, Bridges, Strato }),
-    [bundledWalletInfo, Bridges, Strato]
+    () => ({ bundledWalletInfo, Bridges, Venin }),
+    [bundledWalletInfo, Bridges, Venin]
   );
 
   return (
-    <StratoContext.Provider value={ctxValue}>{children}</StratoContext.Provider>
+    <VeninContext.Provider value={ctxValue}>{children}</VeninContext.Provider>
   );
 }

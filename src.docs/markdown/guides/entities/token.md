@@ -29,6 +29,7 @@ export type CreateTokenFeatures = TokenFeatures & {
   decimals?: number | Long.Long;
   customFees?: { feeCollectorAccountId?: string | AccountId | undefined }[];
   freezeDefault?: boolean;
+  maxTransactionFee?: number | Long.Long | Hbar;
 };
 
 type TokenKeys = {

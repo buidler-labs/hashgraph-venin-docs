@@ -4,10 +4,10 @@ import { LiveProvider } from "react-live";
 
 import LiveEventEmitter from "../ReactLive/LiveEventEmitter";
 import LoadingSpinner from "./Components/LoadingSpinner";
-import { StratoContext } from "../Root";
+import { VeninContext } from "../Root";
 import LiveEditorContainer from "./Components/LiveEditorContainer";
 import LiveResultContainer from "./Components/LiveResultContainer";
-import { StratoLiveLogger } from "./StratoLiveLogger";
+import { VeninLiveLogger } from "./VeninLiveLogger";
 
 const wrapAsync = (code, UeID) => {
   const transformedCode = `
@@ -54,11 +54,11 @@ const ReactLive = ({ children }) => {
   const [error, setError] = React.useState(null);
   const [code, setCode] = React.useState(children);
   const [UeID] = React.useState(Math.random()); // Unique Editor Id
-  const { Strato } = React.useContext(StratoContext);
+  const { Venin } = React.useContext(VeninContext);
   const prismTheme = usePrismTheme();
-  const [logger] = React.useState(new StratoLiveLogger());
+  const [logger] = React.useState(new VeninLiveLogger());
   const scope = {
-    ...Strato,
+    ...Venin,
     Loader: LoadingSpinner,
     events,
     logger,
@@ -91,7 +91,7 @@ const ReactLive = ({ children }) => {
   };
 
   React.useEffect(() => {
-    if (Strato && Strato.ApiSession) {
+    if (Venin && Venin.ApiSession) {
       events.on("running", onRunHandler);
       events.on("done", onDoneHandler);
       events.on("executionError", executionErrorHandler);
@@ -104,7 +104,7 @@ const ReactLive = ({ children }) => {
       events.removeListener("done", onDoneHandler);
       events.removeListener("executionError", executionErrorHandler);
     };
-  }, [Strato]);
+  }, [Venin]);
 
   return (
     <LiveProvider

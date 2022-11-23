@@ -15,7 +15,7 @@ will suffice.
 
 ## Hello Strato
 
-As we've seen in our introductory page, firing up your first Strato smart-contract example should be straight forward but let's kick it up a notch to make things a little more interesting. Suppose you have a trimmed down version (comments & `dec` method stripped) of [the following contract](https://solidity-by-example.org/first-app/):
+As we've seen in our introductory page, firing up your first Venin smart-contract example should be straight forward but let's kick it up a notch to make things a little more interesting. Suppose you have a trimmed down version (comments & `dec` method stripped) of [the following contract](https://solidity-by-example.org/first-app/):
 
 ```sol title="./increment.sol"
 // SPDX-License-Identifier: MIT
@@ -36,7 +36,7 @@ contract Counter {
 
 Instead of having a value that we read from the contract, we have state-mutating methods and a way to query the inner state which is much closer to production scenarios and, therefore, much more useful for our learning journey.
 
-Interacting with it via Strato could be as simple as:
+Interacting with it via Venin could be as simple as:
 
 ```js live=true containerKey=increment_from_path
 const { session } = await ApiSession.default();
@@ -48,9 +48,9 @@ await liveContract.inc();
 log(await liveContract.get());
 ```
 
-By convention, when calling `Contract.newFrom` and passing it a `path` of a `.sol` file, Strato expects to find the solidity contract code in the `contracts` folder. This is configurable via the `HEDERAS_CONTRACTS_RELATIVE_PATH` environment variable.
+By convention, when calling `Contract.newFrom` and passing it a `path` of a `.sol` file, Venin expects to find the solidity contract code in the `contracts` folder. This is configurable via the `HEDERAS_CONTRACTS_RELATIVE_PATH` environment variable.
 
-If you were to run this code snippet, you would end up with a complaint issued by `ApiSession.default` saying something about a network not available issue. That's because Strato does not know, out of the box, to which network you want to connect.
+If you were to run this code snippet, you would end up with a complaint issued by `ApiSession.default` saying something about a network not available issue. That's because Venin does not know, out of the box, to which network you want to connect.
 
 We'll discuss configuration aspects in the upcoming page, but for now, to make this running, just create a `.env` file in your project root directory and have the following values defined:
 
@@ -96,7 +96,7 @@ HEDERAS_LOGGER_ENABLED=true
 
 ## Architecture
 
-Before we move on, it's worth talking here a bit about Strato's envisioned design:
+Before we move on, it's worth talking here a bit about Venin's envisioned design:
 
 ```mermaid
 classDiagram
@@ -188,4 +188,4 @@ Having said that, depending on the Hedera targeted service, there are 2 types of
 
 ## Next up
 
-Now that we've discussed a bit about installing and running some Strato code as well as the overall design vision of the library, it's high time we have a look at configuring/customizing a runtime `ApiSession`.
+Now that we've discussed a bit about installing and running some Venin code as well as the overall design vision of the library, it's high time we have a look at configuring/customizing a runtime `ApiSession`.

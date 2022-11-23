@@ -3,7 +3,7 @@ id: topic
 title: Topic
 ---
 
-Topics (through the [Hedera Consensus Service - HCS](https://docs.hedera.com/guides/docs/sdks/consensus)) are the backbone of Hedera's traffic accounting, at the time of this writing, for [more then 85% of the network's traffic](https://app.dragonglass.me/chart?name=txn-service-type&period=1D). This makes them the hottest services used on the network. Naturally, Strato supports them with more features planned for the upcoming future.
+Topics (through the [Hedera Consensus Service - HCS](https://docs.hedera.com/guides/docs/sdks/consensus)) are the backbone of Hedera's traffic accounting, at the time of this writing, for [more then 85% of the network's traffic](https://app.dragonglass.me/chart?name=txn-service-type&period=1D). This makes them the hottest services used on the network. Naturally, Venin supports them with more features planned for the upcoming future.
 
 ### Creating a Topic
 

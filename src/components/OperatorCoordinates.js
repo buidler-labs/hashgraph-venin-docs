@@ -3,10 +3,10 @@
 import BrowserOnly from "@docusaurus/BrowserOnly";
 import React from "react";
 
-import { StratoContext } from "../theme/Root";
+import { VeninContext } from "../theme/Root";
 
 export const OperatorId = () => {
-  const { bundledWalletInfo } = React.useContext(StratoContext);
+  const { bundledWalletInfo } = React.useContext(VeninContext);
 
   return (
     <BrowserOnly fallback={<code>unknown</code>}>
@@ -26,7 +26,7 @@ export const OperatorId = () => {
 };
 
 export const OperatorNetwork = () => {
-  const { bundledWalletInfo } = React.useContext(StratoContext);
+  const { bundledWalletInfo } = React.useContext(VeninContext);
 
   return (
     <BrowserOnly fallback={<code>unknown</code>}>

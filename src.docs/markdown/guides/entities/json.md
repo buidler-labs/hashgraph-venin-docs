@@ -5,7 +5,7 @@ title: Json
 
 ### Why?
 
-Strato has native support to store and retrieve basic JavaScript objects (JSONs) using Hedera's File Service. This is particularly handy if you plan on storing some basic data/configuration for your dApp.
+Venin has native support to store and retrieve basic JavaScript objects (JSONs) using Hedera's File Service. This is particularly handy if you plan on storing some basic data/configuration for your dApp.
 
 ### Storing a Json
 

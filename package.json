@@ -1,7 +1,7 @@
 {
   "author": "Buidler Labs Developers <devs@buidlerlabs.com>",
-  "description": "Documentation accompanying the Strato Js library",
-  "name": "@buidlerlabs/hedera-strato-docs",
+  "description": "Documentation accompanying the Venin Js library",
+  "name": "@buidlerlabs/hedera-venin-docs",
   "scripts": {
     "build": "run-s build:libs build:docs-docusaurus",
     "build:libs": "run-s bundle:libs copy:libs",
@@ -13,7 +13,7 @@
     "start:docs": "docusaurus start --no-minify --no-open"
   },
   "keywords": [
-    "StratoJs",
+    "VeninJs",
     "Hedera",
     "Hashgraph",
     "Smart Contracts"
@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/buidler-labs/hedera-strato-docs"
+    "url": "https://github.com/buidler-labs/hedera-venin-docs"
   },
   "version": "0.8.0"
 }

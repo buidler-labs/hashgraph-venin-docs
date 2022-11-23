@@ -61,8 +61,8 @@ async function getBridgedWallet(
   const jAccountInfo = await accountInfoResponse.json();
   const accountPublicKey = PublicKey.fromString(jAccountInfo.key.key);
 
-  // This region adapts the original HashConnectSigner received from HashConnect to the expected interface by Strato
-  // We need to export the provider so that Strato's underlying Wallet can make use of it when query-ing for the receipts
+  // This region adapts the original HashConnectSigner received from HashConnect to the expected interface by Venin
+  // We need to export the provider so that Venin's underlying Wallet can make use of it when query-ing for the receipts
   // This was present in the original HIP-338 Wallet specs
   hcSigner.getProvider = () => {
     return provider;

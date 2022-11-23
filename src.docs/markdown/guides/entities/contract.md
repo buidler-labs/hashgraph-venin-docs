@@ -23,11 +23,11 @@ Once an `ApiSession` and a `Contract` is available, deploying the code on the ne
 
 #### Transaction meta-arguments
 
-Going into more depth with this method, if one wants to tweak the [Hedera File Service - Create File Transaction](https://docs.hedera.com/guides/docs/sdks/file-storage/create-a-file) step with extra-arguments, just pass in a second param to the `upload` call which is a object of the form `{_file: {...}}` containing any required options. For example, to attach a "Hello Strato" memo to the uploaded contract code, the resulting call would end up being: `session.upload(contract, {_file: {fileMemo: "Hello Strato"}})`.
+Going into more depth with this method, if one wants to tweak the [Hedera File Service - Create File Transaction](https://docs.hedera.com/guides/docs/sdks/file-storage/create-a-file) step with extra-arguments, just pass in a second param to the `upload` call which is a object of the form `{_file: {...}}` containing any required options. For example, to attach a "Hello Venin" memo to the uploaded contract code, the resulting call would end up being: `session.upload(contract, {_file: {fileMemo: "Hello Venin"}})`.
 
 To pass [Create Smart Contract Transaction](https://docs.hedera.com/guides/docs/sdks/smart-contracts/create-a-smart-contract) parameters, have the second object parameter contain a property called `_contract` with the same rationale in mind: set values that you wish to send to the `ContractCreateTransaction` constructor. For instance, if you would like to set a `gas` contract-creation limit to 100,000tℏ, your end `upload` call would be: `session.upload(contract, {_contract: {gas: 100_000}})`. By the way, the default `gas` set for contract-creation transaction [can be tweaked by the `HEDERAS_DEFAULT_CONTRACT_TRANSACTION_GAS` environment variable](../../configuration.md) and is currently set to `169_000`.
 
-You can, of course, pass in both `_file` and `_contract` options. Merging the above 2 examples, `session.upload(contract, {_contract: {gas: 100_000}, _file: {fileMemo: "Hello Strato"}})` would end up uploading a `Contract.byteCode` to Hedera and have a memo attached to the resulting file called "Hello Strato". It would then set a `gas` limit of 100,000tℏ to create the contract. A working example of this, could look as follows:
+You can, of course, pass in both `_file` and `_contract` options. Merging the above 2 examples, `session.upload(contract, {_contract: {gas: 100_000}, _file: {fileMemo: "Hello Venin"}})` would end up uploading a `Contract.byteCode` to Hedera and have a memo attached to the resulting file called "Hello Venin". It would then set a `gas` limit of 100,000tℏ to create the contract. A working example of this, could look as follows:
 
 ```js live=true containerKey=contract_and_file_options
 const { session } = await ApiSession.default();
@@ -36,7 +36,7 @@ const helloWorldContract = await Contract.newFrom({
 });
 const liveContract = await session.upload(helloWorldContract, {
   _contract: { gas: 100000 },
-  _file: { fileMemo: "Hello Strato" },
+  _file: { fileMemo: "Hello Venin" },
 });
 
 log(await liveContract.greet());
@@ -64,13 +64,13 @@ const contract = await Contract.newFrom({ code });
 const liveContract = await session.upload(
   contract,
   { _contract: { gas: 100000 } },
-  "Strato is amazing!"
+  "Venin is amazing!"
 );
 
 log(await liveContract.message());
 ```
 
-This uploads a `contract` with a `gas` create-contract transaction set to 100,000tℏ and calling the `contract`'s constructor passing in the string `Strato is amazing!`.
+This uploads a `contract` with a `gas` create-contract transaction set to 100,000tℏ and calling the `contract`'s constructor passing in the string `Venin is amazing!`.
 
 ### Interacting with deployed contracts
 
@@ -102,11 +102,11 @@ log(await liveContract.get());
 ```
 
 :::note
-When dealing with _big numbers_, the library uses the same one used by the Hedera SDK: [bignumber.js](https://github.com/MikeMcl/bignumber.js/). This is intentional since one of the core design principles of Strato's API is to try to mimic as close as possible Hedera's own SDK return types.
+When dealing with _big numbers_, the library uses the same one used by the Hedera SDK: [bignumber.js](https://github.com/MikeMcl/bignumber.js/). This is intentional since one of the core design principles of Venin's API is to try to mimic as close as possible Hedera's own SDK return types.
 
 I say _as close as possible_ to allow for specially thought-of exceptions backed-up by common sense reasoning where the benefit in doing things in another way would be greater then following 1-to-1 with Hedera's SDK.
 
-One such exception has to do with returning `bytes` from a method. While Hedera would just return a hex-encoded string of those bytes, as of `v0.7.5`, Strato returns a managed bytes collection (eg `Uint8Array`) of bytes.
+One such exception has to do with returning `bytes` from a method. While Hedera would just return a hex-encoded string of those bytes, as of `v0.7.5`, Venin returns a managed bytes collection (eg `Uint8Array`) of bytes.
 :::
 
 #### Dealing with events

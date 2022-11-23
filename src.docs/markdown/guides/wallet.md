@@ -33,7 +33,7 @@ Due to Hedera's pricing model as well as `Query` mechanics and, in general, over
 
 This means that only `wallet.getAccountBalance()` is supported and that, consequently, `wallet.getAccountInfo()` and `wallet.getAccountRecords()` are not.
 
-This also means that contract creation/querying is not currently supported. We plan on mitigating this with a future Strato release by augmenting the data via [a mirror-node response](https://docs.hedera.com/guides/docs/mirror-node-api/rest-api).
+This also means that contract creation/querying is not currently supported. We plan on mitigating this with a future Venin release by augmenting the data via [a mirror-node response](https://docs.hedera.com/guides/docs/mirror-node-api/rest-api).
 :::
 
 ## Under the hood

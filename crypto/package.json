@@ -1,27 +1,27 @@
 {
   "name": "buidlerlabs-crypto",
   "version": "0.6.9",
-  "description": "Support for Hedera & Strato Web3 workings",
+  "description": "Support for Hedera & Venin Web3 workings",
   "private": true,
   "main": "index.js",
   "exports": {
     ".": "./index.js",
-    "./hedera-strato": "./libs/hedera-strato-js.js",
+    "./hedera-venin": "./libs/hedera-venin-js.js",
     "./hedera-wallet-bridges": "./libs/hedera-wallet-bridges",
     "./hashgraph-sdk": "./libs/hashgraph-sdk.js"
   },
   "scripts": {
-    "bundle:strato": "rollup -c strato/rollup.config.mjs",
+    "bundle:venin": "rollup -c venin/rollup.config.mjs",
     "bundle:wallet-bridge": "rollup -c wallet-bridge/rollup.config.js",
     "bundle:hashgraph-sdk": "rollup -c hashgraph-sdk/rollup.config.js",
-    "bundle:libs": "env-cmd run-s bundle:hashgraph-sdk bundle:wallet-bridge bundle:strato"
+    "bundle:libs": "env-cmd run-s bundle:hashgraph-sdk bundle:wallet-bridge bundle:venin"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-typescript": "^7.16.7",
-    "@buidlerlabs/rollup-plugin-hedera-strato": "~0.8.0",
+    "@buidlerlabs/rollup-plugin-hedera-venin": "~0.8.1",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
@@ -39,7 +39,7 @@
     "stream-browserify": "^3.0.0"
   },
   "dependencies": {
-    "@buidlerlabs/hedera-strato-js": "~0.8.0",
+    "@buidlerlabs/hedera-venin-js": "~0.8.1",
     "@hashgraph/sdk": "^2.11.3",
     "@openzeppelin/contracts": "^4.7.3",
     "hashconnect": "^0.2.2",

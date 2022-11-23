@@ -2,14 +2,14 @@ import * as React from "react";
 import styles from "../Playground/styles.module.css";
 import LoadingSpinner from "./Components/LoadingSpinner";
 
-export class StratoLiveLogger {
+export class VeninLiveLogger {
   constructor() {
     this._sSession = null;
     this._logs = [];
   }
 
   bindTo(session, render) {
-    const stratoLogger = session.log;
+    const veninLogger = session.log;
     const argToLogResult = (_arg) => {
       try {
         if (_arg.logLevel) {
@@ -51,16 +51,16 @@ export class StratoLiveLogger {
       this.doA(render);
     };
 
-    stratoLogger.addListener("debug", (message) =>
+    veninLogger.addListener("debug", (message) =>
       this._handleLog(message, "debug")
     );
-    stratoLogger.addListener("error", (message) =>
+    veninLogger.addListener("error", (message) =>
       this._handleLog(message, "error")
     );
-    stratoLogger.addListener("info", (message) =>
+    veninLogger.addListener("info", (message) =>
       this._handleLog(message, "info")
     );
-    stratoLogger.addListener("warn", (message) =>
+    veninLogger.addListener("warn", (message) =>
       this._handleLog(message, "warn")
     );
     this._sSession = session;
@@ -75,12 +75,12 @@ export class StratoLiveLogger {
   release(render) {
     if (!this._sSession) return;
 
-    const stratoLogger = this._sSession.log;
+    const veninLogger = this._sSession.log;
 
-    stratoLogger.removeListener("debug", this._handleLog);
-    stratoLogger.removeListener("error", this._handleLog);
-    stratoLogger.removeListener("info", this._handleLog);
-    stratoLogger.removeListener("warn", this._handleLog);
+    veninLogger.removeListener("debug", this._handleLog);
+    veninLogger.removeListener("error", this._handleLog);
+    veninLogger.removeListener("info", this._handleLog);
+    veninLogger.removeListener("warn", this._handleLog);
     this._sSession = null;
     this.doA(render);
     this._logs = [];

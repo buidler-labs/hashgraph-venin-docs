@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 
-const stratoLibInfo = require("./crypto/node_modules/@buidlerlabs/hedera-strato-js/package.json");
+const veninLibInfo = require("./crypto/node_modules/@buidlerlabs/hedera-venin-js/package.json");
 const remarkMermaid = require("mdx-mermaid");
 const remarkNpm2Yarn = require("@docusaurus/remark-plugin-npm2yarn");
 const remarkNumberedFootnoteLabels = require("remark-numbered-footnote-labels");
@@ -38,7 +38,7 @@ module.exports = async function () {
           blog: false,
           docs: {
             editUrl:
-              "https://github.com/buidler-labs/hedera-strato-docs/edit/main/",
+              "https://github.com/buidler-labs/hedera-venin-docs/edit/main/",
             exclude: ["**/src/**"],
             path: "src.docs",
             remarkPlugins: [
@@ -62,16 +62,16 @@ module.exports = async function () {
         },
       ],
     ],
-    projectName: "hedera-strato-js",
+    projectName: "hedera-venin-js",
     staticDirectories: ["static"],
     tagline: "Write Hedera dApps like a boss because why not?",
     themeConfig: {
       footer: {
         copyright: `
-        🔌 by <a href='https://www.npmjs.com/package/@buidlerlabs/hedera-strato-js/v/${
-          stratoLibInfo.version
-        }'>Strato v${
-          stratoLibInfo.version
+        🔌 by <a href='https://www.npmjs.com/package/@buidlerlabs/hedera-venin-js/v/${
+          veninLibInfo.version
+        }'>venin v${
+          veninLibInfo.version
         }</a>, 🛠️ with ❤️ in <a href='https://docusaurus.io/'>Docusaurus</a></br>
           ©️ ${new Date().getFullYear()} <a href='https://github.com/buidler-labs'>Buidler Labs</a>
         `,
@@ -90,13 +90,13 @@ module.exports = async function () {
         items: [
           {
             href: "/",
-            label: "Hedera Strato JS",
+            label: "Hedera Venin JS",
             position: "left",
           },
           {
             "aria-label": "GitHub repository",
             className: "header-github-link",
-            href: "https://github.com/buidler-labs/hedera-strato-js",
+            href: "https://github.com/buidler-labs/hedera-venin-js",
             position: "right",
           },
         ],
@@ -105,7 +105,7 @@ module.exports = async function () {
         additionalLanguages: ["solidity"],
       },
     },
-    title: "Hedera Strato JS",
-    url: "https://hsj-docs.buidlerlabs.com/",
+    title: "Hedera Venin JS",
+    url: "https://venin.buidlerlabs.com/",
   };
 };
