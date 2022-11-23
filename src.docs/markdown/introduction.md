@@ -6,15 +6,15 @@ title: 🔭 Welcome to Venin! 🌌
 
 <div align="center">
 
-![NodeJS/JsDOM/Browser tests](https://img.shields.io/github/workflow/status/buidler-labs/hedera-strato-js/test-nodejs-jsdom-browser?style=flat-square&label=tests&color=yellowgreen)
-[![codecov](https://img.shields.io/codecov/c/github/buidler-labs/hedera-strato-js?style=flat-square)](https://codecov.io/gh/buidler-labs/hedera-strato-js)
+![NodeJS/JsDOM/Browser tests](https://img.shields.io/github/workflow/status/buidler-labs/hashgraph-venin-js/test-nodejs-jsdom-browser?style=flat-square&label=tests&color=yellowgreen)
+[![codecov](https://img.shields.io/codecov/c/github/buidler-labs/hashgraph-venin-js?style=flat-square)](https://codecov.io/gh/buidler-labs/hashgraph-venin-js)
 [![Discord support channel](https://img.shields.io/discord/949250301792239686?style=flat-square)](https://discord.com/invite/4mYCre869F)
 ![contributions](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
-![license](https://img.shields.io/github/license/buidler-labs/hedera-strato-js.svg?colorB=ff0000&style=flat-square)
+![license](https://img.shields.io/github/license/buidler-labs/hashgraph-venin-js.svg?colorB=ff0000&style=flat-square)
 ![node version](https://img.shields.io/badge/Node.js-%3E%3D14.8.0-orange.svg?style=flat-square)
-![npm version](https://img.shields.io/npm/v/@buidlerlabs/hedera-strato-js.svg?style=flat-square)
+![npm version](https://img.shields.io/npm/v/@buidlerlabs/hashgraph-venin-js.svg?style=flat-square)
 
-[![NPM](https://nodei.co/npm/@buidlerlabs/hedera-strato-js.png?mini=true)](https://nodei.co/npm/@buidlerlabs/hedera-strato-js/)
+[![NPM](https://nodei.co/npm/@buidlerlabs/hashgraph-venin-js.png?mini=true)](https://nodei.co/npm/@buidlerlabs/hashgraph-venin-js/)
 
 </div>
 
@@ -27,7 +27,7 @@ import { OperatorId, OperatorNetwork } from '@site/src/components/OperatorCoordi
 [^dapp]: decentralized application
 
 :::note Disclaimer
-This project is not an official Hedera project. It is an independent, community driven, effort to bring clarity and _joy_ towards developing smart-contract applications on the Hedera network-chain ecosystem.
+This project is an independent, community driven, effort to bring clarity and _joy_ towards developing smart-contract applications on the Hedera network-chain ecosystem.
 
 Having said that, we have been [featured on Hedera's blog](https://hedera.com/blog/meet-strato-a-concise-yet-powerful-sdk-alternative-for-js-devs) and, hopefully, will continue to be so as Venin draws closer to a more stable-badge status.
 :::
@@ -188,7 +188,7 @@ log(await liveContract.greet());
 
 If you want to quickly get your hands dirty, we prepared a [quick-start demo repo](https://github.com/buidler-labs/hsj-example) for you to play with. You'll first need to setup an `.env` file, but don't worry, there are a few mandatory entries and everything is explained in [configuration section](configuration.md).
 
-You can also start from [the `.env.sample` file](https://github.com/buidler-labs/hedera-strato-js/blob/main/.env.sample) which is meant to be a minimal-config template. This also means that not all the config options are directly available there so you might as well cross-reference them with the [online config values](configuration.md).
+You can also start from [the `.env.sample` file](https://github.com/buidler-labs/hashgraph-venin-js/blob/main/.env.sample) which is meant to be a minimal-config template. This also means that not all the config options are directly available there so you might as well cross-reference them with the [online config values](configuration.md).
 
 Another option would be to just code in-browser using our [playground](playground.md).
 
@@ -201,7 +201,7 @@ Venin already is packed with a lot of stuff:
 ✔️ Pubsub for contract emitted events  
 ✔️ Pubsub for transaction receipts  
 ✔️ Fine grained cost-control  
-✔️ Browser bundle-able via a custom made Rollup plugin ([webpack pending](https://github.com/buidler-labs/hedera-strato-js/issues/26))  
+✔️ Browser bundle-able via a custom made Rollup plugin ([webpack pending](https://github.com/buidler-labs/hashgraph-venin-js/issues/26))  
 ✔️ Using Hedera File Storage as a place to store generic files and JSONs  
 ✔️ Create token via the Hedera Token Service (HTS)  
 ✔️ Create a Hedera account  
@@ -219,7 +219,7 @@ Venin already is packed with a lot of stuff:
 
 ## Contributions
 
-Do you think we missed anything? Want some important feature prioritized? Do you have an idea of something that we might improve? Head over to [our issues page](https://github.com/buidler-labs/hedera-strato-js/issues) and let us know! We want Venin to be a community-lead initiative. This means that any opinion or critic is encouraged (and even welcomed)!
+Do you think we missed anything? Want some important feature prioritized? Do you have an idea of something that we might improve? Head over to [our issues page](https://github.com/buidler-labs/hashgraph-venin-js/issues) and let us know! We want Venin to be a community-lead initiative. This means that any opinion or critic is encouraged (and even welcomed)!
 
 Of course, if you're eager to write it yourself, that's also fine and dandy! Just fork us, add your changes and open a pull request. We'll take it from there ...
 

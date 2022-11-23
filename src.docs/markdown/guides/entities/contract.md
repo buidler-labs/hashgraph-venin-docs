@@ -78,7 +78,7 @@ This uploads a `contract` with a `gas` create-contract transaction set to 100,00
 
 As you've probably seen so many times now, following a successful deployment, _await_-ing a `ApiSession.upload` call returns a `LiveContract` instance which has the solidity's contract functions dynamically attached to it and available for calling. This means that if a contract `A` has a method `foo` on it, the resulting `LiveContract` will also have a function `foo` defined on it.
 
-So if, for example, we were to upload [solidity-by-example](https://solidity-by-example.org/)'s [First App](https://solidity-by-example.org/first-app/) Contract via a `session.upload` call, that will eventually resolve to a `LiveContract` instance which would have a `get`, an `inc` and a `dec` [defined on it as one might expect](https://github.com/buidler-labs/hedera-strato-js/blob/90bc1075892844bc46bf6e3fd191817622ee675d/test/LiveContract.spec.ts#L87).
+So if, for example, we were to upload [solidity-by-example](https://solidity-by-example.org/)'s [First App](https://solidity-by-example.org/first-app/) Contract via a `session.upload` call, that will eventually resolve to a `LiveContract` instance which would have a `get`, an `inc` and a `dec` [defined on it as one might expect](https://github.com/buidler-labs/hashgraph-venin-js/blob/90bc1075892844bc46bf6e3fd191817622ee675d/test/LiveContract.spec.ts#L87).
 
 ```js live=true containerKey=call_deployed_contract_methods
 const { session } = await ApiSession.default();
@@ -90,7 +90,7 @@ await liveContract.inc();
 log(await liveContract.get());
 ```
 
-Of course, function arguments are also supported so if we have such a live-contract function ([solidity-by-example's State Variable](https://solidity-by-example.org/state-variables/) code, [for instance](https://github.com/buidler-labs/hedera-strato-js/blob/90bc1075892844bc46bf6e3fd191817622ee675d/test/LiveContract.spec.ts#L111)), you can call into these methods, passing in the expected values as expected.
+Of course, function arguments are also supported so if we have such a live-contract function ([solidity-by-example's State Variable](https://solidity-by-example.org/state-variables/) code, [for instance](https://github.com/buidler-labs/hashgraph-venin-js/blob/90bc1075892844bc46bf6e3fd191817622ee675d/test/LiveContract.spec.ts#L111)), you can call into these methods, passing in the expected values as expected.
 
 ```js live=true containerKey=function_arguments
 const { session } = await ApiSession.default();
@@ -111,7 +111,7 @@ One such exception has to do with returning `bytes` from a method. While Hedera 
 
 #### Dealing with events
 
-Contract _events_ are propagated upwards from `LiveContract` through the `EventEmitter`-inspired methods. As such one can _listen_ to an event by simply calling a `.onEvent("event_name", () => { ... })` on the live-contract instance. Our test cases include [solidity-by-example's Events code](https://solidity-by-example.org/events/) to make sure this works. [Have a look for yourself](https://github.com/buidler-labs/hedera-strato-js/blob/12300217a7d19abb5edc118e01295fdb18774d85/test/LiveContract.spec.ts#L210), if interested, or check it out right now:
+Contract _events_ are propagated upwards from `LiveContract` through the `EventEmitter`-inspired methods. As such one can _listen_ to an event by simply calling a `.onEvent("event_name", () => { ... })` on the live-contract instance. Our test cases include [solidity-by-example's Events code](https://solidity-by-example.org/events/) to make sure this works. [Have a look for yourself](https://github.com/buidler-labs/hashgraph-venin-js/blob/12300217a7d19abb5edc118e01295fdb18774d85/test/LiveContract.spec.ts#L210), if interested, or check it out right now:
 
 ```js live=true containerKey=dealing_with_events
 const { session } = await ApiSession.default();
@@ -169,7 +169,7 @@ log(await liveContract.get());
 
 Uploading a `Contract` is not the only way to get a hold on a deployed, `LiveContract` instance. `ApiSession` also exposes a `getLiveContract` method which takes in a `ContractId` as it's `id` object param and the contract's ABI as its `abi` parameter to lock onto a deployed version of that code on the network.
 
-Want to find out more? [Have a look at our test-case](https://github.com/buidler-labs/hedera-strato-js/blob/90bc1075892844bc46bf6e3fd191817622ee675d/test/LiveContract.spec.ts#L31) for an example on how one might go about doing just that or check it out yourself with a pre-uploaded testnet [`SimpleStorage` contract](https://solidity-by-example.org/state-variables/) just for the sake of example:
+Want to find out more? [Have a look at our test-case](https://github.com/buidler-labs/hashgraph-venin-js/blob/90bc1075892844bc46bf6e3fd191817622ee675d/test/LiveContract.spec.ts#L31) for an example on how one might go about doing just that or check it out yourself with a pre-uploaded testnet [`SimpleStorage` contract](https://solidity-by-example.org/state-variables/) just for the sake of example:
 
 ```js live=true containerKey=retreive_deployed_contracts
 const { session } = await ApiSession.default();

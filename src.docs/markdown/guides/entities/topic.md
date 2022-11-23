@@ -36,11 +36,11 @@ log(`Topic is available at ${liveTopic.id}`);
 
 ### Retrieving a Topic
 
-Is not currently possible but will be once [issue #60 gets resolved](https://github.com/buidler-labs/hedera-strato-js/issues/60).
+Is not currently possible but will be once [issue #60 gets resolved](https://github.com/buidler-labs/hashgraph-venin-js/issues/60).
 
 ### LiveTopic operations
 
-Currently, `LiveTopic`s support sending messages via their `LiveTopic.submitMessage(message)` method. `message` can be either a `string` or a `Uint8Array`. Subscribing to messages will be possible following the [resolving of issue #47](https://github.com/buidler-labs/hedera-strato-js/issues/47).
+Currently, `LiveTopic`s support sending messages via their `LiveTopic.submitMessage(message)` method. `message` can be either a `string` or a `Uint8Array`. Subscribing to messages will be possible following the [resolving of issue #47](https://github.com/buidler-labs/hashgraph-venin-js/issues/47).
 
 #### Deleting a Topic
 

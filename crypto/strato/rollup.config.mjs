@@ -7,7 +7,7 @@ import json from "@rollup/plugin-json";
 import nodePolyfills from "rollup-plugin-node-polyfills";
 import resolve from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
-import venin from "@buidlerlabs/rollup-plugin-hedera-venin";
+import venin from "@buidlerlabs/rollup-plugin-hashgraph-venin";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -27,10 +27,10 @@ export default async function getConfig() {
   return {
     context: "window",
     external: ["@hashgraph/sdk"],
-    input: "./node_modules/@buidlerlabs/hedera-venin-js/lib.esm/index.mjs",
+    input: "./node_modules/@buidlerlabs/hashgraph-venin-js/lib.esm/index.mjs",
     output: [
       {
-        file: getPathOf("../libs/hedera-venin-js.js"),
+        file: getPathOf("../libs/hashgraph-venin-js.js"),
         format: "esm",
         paths: {
           "@hashgraph/sdk": "./hashgraph-sdk.js",

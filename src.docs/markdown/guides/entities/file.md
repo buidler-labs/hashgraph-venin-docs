@@ -44,7 +44,7 @@ Besides setting a `memo` you can pick and use any other fields that [the `FileCr
 
 ### Retrieving a file from the network
 
-Although there is no `ApiSession.getLiveJson` equivalent method available to retrieve a `LiveFile` from Hedera (this will be supported [once #58 gets implemented](https://github.com/buidler-labs/hedera-strato-js/issues/58)), we do provide a workaround:
+Although there is no `ApiSession.getLiveJson` equivalent method available to retrieve a `LiveFile` from Hedera (this will be supported [once #58 gets implemented](https://github.com/buidler-labs/hashgraph-venin-js/issues/58)), we do provide a workaround:
 
 - having a `FileId` at hand, manually create a `LiveFile` via its constructor binding it to a working `ApiSession`
 - call `LiveFile.getContents()` to retrieve it's raw `Uint8Array` content

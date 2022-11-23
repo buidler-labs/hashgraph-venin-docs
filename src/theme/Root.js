@@ -12,7 +12,7 @@ export default function Root({ children }) {
   React.useEffect(() => {
     import(
       /* webpackIgnore: true */
-      "/js/hedera-venin-js.js"
+      "/js/hashgraph-venin-js.js"
     ).then((Venin) => {
       setVenin(Venin);
       Venin.ApiSession.default().then(({ session }) => {
@@ -24,7 +24,7 @@ export default function Root({ children }) {
     });
     import(
       /* webpackIgnore: true */
-      "/js/hedera-wallet-bridges.js"
+      "/js/hashgraph-wallet-bridges.js"
     ).then((Bridges) => {
       setBridges(Bridges);
     });

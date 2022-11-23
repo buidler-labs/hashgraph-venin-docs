@@ -93,7 +93,7 @@ Currently, `LiveToken`s support assigning supply control to something else (a di
 
 #### Retrieving a deployed token
 
-It's currently not possible to retrieve a `Token` once deployed but it will be [once issue #59 is implemented](https://github.com/buidler-labs/hedera-strato-js/issues/59).
+It's currently not possible to retrieve a `Token` once deployed but it will be [once issue #59 is implemented](https://github.com/buidler-labs/hashgraph-venin-js/issues/59).
 
 #### Deleting a LiveToken
 

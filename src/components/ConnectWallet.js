@@ -5,7 +5,7 @@ import React from "react";
 import { VeninContext } from "../theme/Root";
 
 const appMetadata = {
-  description: "Hedera Venin Documentation",
+  description: "Hashgraph Venin Documentation",
   icon: "https://www.hashpack.app/img/logo.svg",
   name: "hVenin",
 };

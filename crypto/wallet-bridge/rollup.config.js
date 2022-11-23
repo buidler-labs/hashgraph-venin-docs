@@ -22,7 +22,7 @@ export default async function getConfig() {
     input: "./src/wallet.ts",
     output: [
       {
-        file: getPathOf("../libs/hedera-wallet-bridges.js"),
+        file: getPathOf("../libs/hashgraph-wallet-bridges.js"),
         format: "esm",
         paths: {
           "@hashgraph/sdk": "./hashgraph-sdk.js",

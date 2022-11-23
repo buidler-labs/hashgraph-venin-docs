@@ -95,4 +95,4 @@ As seen above, there are currently 2 types of `wallet` backends:
 For `Browser` wallets, property names can be changed via the `HEDERAS_WALLET_WINDOW_PROPERTY_NAME`/`wallet.window.propName` config.
 :::
 
-The code for the HashPack HIP-338 wallet-bridge used in this page can be [found here](https://github.com/buidler-labs/hedera-strato-js/tree/va/hip-338/lib.docs/src/hashconnect). In the future, this will most likely be contained within the hashconnect codebase for obvious reasons.
+The code for the HashPack HIP-338 wallet-bridge used in this page can be [found here](https://github.com/buidler-labs/hashgraph-venin-js/tree/va/hip-338/lib.docs/src/hashconnect). In the future, this will most likely be contained within the hashconnect codebase for obvious reasons.

@@ -8,12 +8,12 @@ title: Quick Start
 Your normal
 
 ```bash npm2yarn
-npm install @buidlerlabs/hedera-strato-js
+npm install @buidlerlabs/hashgraph-venin-js
 ```
 
 will suffice.
 
-## Hello Strato
+## Hello Venin
 
 As we've seen in our introductory page, firing up your first Venin smart-contract example should be straight forward but let's kick it up a notch to make things a little more interesting. Suppose you have a trimmed down version (comments & `dec` method stripped) of [the following contract](https://solidity-by-example.org/first-app/):
 
@@ -153,7 +153,7 @@ classDiagram
 ```
 
 :::info
-This is just a high level overview that helps arguing the library architecture decisions for most of the developer use-cases. It is, by no means, complete. More sophisticated entities such as [the `StratoWallet` interface](https://github.com/buidler-labs/hedera-strato-js/tree/main/lib/core/wallet) (which helps configure the underlying network layer aiding [the wallet bridge](./guides//wallet.md) in the process) have been excluded from the diagram.
+This is just a high level overview that helps arguing the library architecture decisions for most of the developer use-cases. It is, by no means, complete. More sophisticated entities such as [the `StratoWallet` interface](https://github.com/buidler-labs/hashgraph-venin-js/tree/main/lib/core/wallet) (which helps configure the underlying network layer aiding [the wallet bridge](./guides//wallet.md) in the process) have been excluded from the diagram.
 
 This has been done both to conserve pixels and due to the fact that those entities are still in development.
 :::

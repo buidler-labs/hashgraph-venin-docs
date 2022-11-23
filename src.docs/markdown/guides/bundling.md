@@ -3,7 +3,7 @@ id: bundling
 title: Bundling
 ---
 
-Currently we offer support for bundling strato via [rollup](https://rollupjs.org/) with support for other bundlers [being scheduled](https://github.com/buidler-labs/hedera-strato-js/issues/26), yet not committed.
+Currently we offer support for bundling venin via [rollup](https://rollupjs.org/) with support for other bundlers [being scheduled](https://github.com/buidler-labs/hashgraph-venin-js/issues/26), yet not committed.
 
 ### General considerations
 
@@ -61,18 +61,18 @@ Besides synthetically generated classes, `process.env` also needs to be unpacked
 
 ## Rollup
 
-If you're using [rollup](https://rollupjs.org/) to bundle your app, we have made available a plugin to take care of all the considerations described above. It's being available at `@buidlerlabs/rollup-plugin-hedera-strato` and you can immediately dive into a working demo [here](https://github.com/buidler-labs/hsj-rollup-demo).
+If you're using [rollup](https://rollupjs.org/) to bundle your app, we have made available a plugin to take care of all the considerations described above. It's being available at `@buidlerlabs/rollup-plugin-hashgraph-venin` and you can immediately dive into a working demo [here](https://github.com/buidler-labs/hsj-rollup-demo).
 
 If you're going down this path, you will need to first install it through something like
 
 ```bash npm2yarn
-npm install --save-dev @buidlerlabs/rollup-plugin-hedera-strato
+npm install --save-dev @buidlerlabs/rollup-plugin-hashgraph-venin
 ```
 
 Importing the _rollup-plugin_ gives access to a default-exported function that generates a rollup-behaved object.
 
 :::info
-You can find more in-depth docs for our rollup-plugin in [its dedicated github page](https://github.com/buidler-labs/hedera-strato-rollup). Feel free to scroll around and bash us with any issues you might hit.
+You can find more in-depth docs for our rollup-plugin in [its dedicated github page](https://github.com/buidler-labs/hashgraph-venin-rollup). Feel free to scroll around and bash us with any issues you might hit.
 
 Following is just a quick summary of them.
 :::
