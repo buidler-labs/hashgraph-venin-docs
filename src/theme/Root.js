@@ -24,7 +24,7 @@ export default function Root({ children }) {
     });
     import(
       /* webpackIgnore: true */
-      "/js/hashgraph-wallet-bridges.js"
+      "/js/hedera-wallet-bridges.js"
     ).then((Bridges) => {
       setBridges(Bridges);
     });

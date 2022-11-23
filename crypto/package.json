@@ -7,7 +7,7 @@
   "exports": {
     ".": "./index.js",
     "./hashgraph-venin": "./libs/hashgraph-venin-js.js",
-    "./hashgraph-wallet-bridges": "./libs/hashgraph-wallet-bridges",
+    "./hedera-wallet-bridges": "./libs/hedera-wallet-bridges",
     "./hashgraph-sdk": "./libs/hashgraph-sdk.js"
   },
   "scripts": {
