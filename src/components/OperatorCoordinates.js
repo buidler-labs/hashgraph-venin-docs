@@ -13,7 +13,7 @@ export const OperatorId = () => {
       {() =>
         bundledWalletInfo ? (
           <a
-            href={`https://hashscan.io/#/${bundledWalletInfo.network}/account/${bundledWalletInfo.accountId}`}
+            href={`https://hashscan.io/${bundledWalletInfo.network}/account/${bundledWalletInfo.accountId}`} target="_blank"
           >
             <code>{bundledWalletInfo.accountId}</code>
           </a>
